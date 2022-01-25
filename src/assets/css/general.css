@@ -1,3 +1,5 @@
+@import '~antd/dist/antd.css';
+
 @font-face {
     font-family: Vazir;
     src: url('../fonts/Vazir.ttf');

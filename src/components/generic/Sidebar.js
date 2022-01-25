@@ -1,7 +1,6 @@
 import { Layout, Menu } from "antd";
 import {
-  AppstoreOutlined,
-  MailOutlined,
+
   SettingOutlined,
   UserOutlined,
   UserAddOutlined,
@@ -11,6 +10,7 @@ import {
   EditOutlined,
 } from "@ant-design/icons";
 
+
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -19,7 +19,7 @@ export default function Sidebar() {
     <Sider>
       <Menu
         defaultSelectedKeys={["dashboard"]}
-        defaultOpenKeys={["sub1"]}
+        defaultOpenKeys={["persons", "posts"]}
         mode="inline"
       >
         <Menu.Item key="dashboard" icon={<TeamOutlined />}>
