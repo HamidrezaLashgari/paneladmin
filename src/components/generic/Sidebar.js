@@ -1,6 +1,5 @@
 import { Layout, Menu } from "antd";
 import {
-
   SettingOutlined,
   UserOutlined,
   UserAddOutlined,
@@ -9,7 +8,7 @@ import {
   AlignRightOutlined,
   EditOutlined,
 } from "@ant-design/icons";
-
+import { Link } from "react-router-dom";
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -23,18 +22,18 @@ export default function Sidebar() {
         mode="inline"
       >
         <Menu.Item key="dashboard" icon={<TeamOutlined />}>
-          داشبورد
+          <Link to="/">داشبورد</Link>
         </Menu.Item>
 
         <SubMenu key="persons" icon={<UserOutlined />} title="مدیریت کاربران">
-          <Menu.Item key="persons" icon={<TeamOutlined />}>
-            لیست کاربرها
+          <Menu.Item key="person" icon={<TeamOutlined />}>
+            <Link to="/persons"> لیست کاربرها</Link>
           </Menu.Item>
           <Menu.Item key="persons/add" icon={<UserAddOutlined />}>
             افزودن کاربر
           </Menu.Item>
         </SubMenu>
-        <SubMenu key="posts" icon={<FormOutlined />} title="مدیریت مقاله ها">
+        <SubMenu key="post" icon={<FormOutlined />} title="مدیریت مقاله ها">
           <Menu.Item key="posts" icon={<AlignRightOutlined />}>
             لیست مقاله ها
           </Menu.Item>
