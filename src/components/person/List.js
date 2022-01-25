@@ -1,6 +1,8 @@
 import { Table } from "antd";
 import axios from "axios";
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { EyeOutlined } from "@ant-design/icons";
 
 export default class List extends Component {
   state = {
@@ -19,12 +21,22 @@ export default class List extends Component {
         return `${field.city}, ${field.street} | Phone:${record.phone}`;
       },
     },
-  ];
+    {
+      title: "",
+      key: "actions",
+      dataIndex: "actions",
+      render: (f, r) =>(
+          <Link to={`/persons/${r.id}`}>
+            <EyeOutlined />
+          </Link>
+        )
+    }
+  ]
 
   componentDidMount() {
     axios("https://jsonplaceholder.typicode.com/users")
-    .then(({data}) => this.setState({persons: data}))
-    .finally(()=> this.setState({loading: false}))
+      .then(({ data }) => this.setState({ persons: data }))
+      .finally(() => this.setState({ loading: false }));
   }
 
   render() {
