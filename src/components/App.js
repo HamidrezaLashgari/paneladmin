@@ -8,6 +8,7 @@ import '../assets/css/general.css'
 import Dashboard from "./generic/Dashboard";
 import List from "./person/List";
 import Page404 from "./generic/Page404";
+import Full from "./person/Full";
 const { Content } = Layout;
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
           <Content className="content">
             <Routes>
               <Route path='/' element={<Dashboard />} />
-              <Route path='/persons' element={<List />} />
+              <Route path='persons' element={<List />} />
+              <Route path='persons/:id' element={<Full />} />
               <Route path='*' element={< Page404 />} />
 
             </Routes>
