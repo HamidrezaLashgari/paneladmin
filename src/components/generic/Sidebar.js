@@ -30,7 +30,7 @@ export default function Sidebar() {
             <Link to="/persons"> لیست کاربرها</Link>
           </Menu.Item>
           <Menu.Item key="persons/add" icon={<UserAddOutlined />}>
-            افزودن کاربر
+            <Link to="/persons/new"> افزودن کاربر</Link>
           </Menu.Item>
         </SubMenu>
         <SubMenu key="post" icon={<FormOutlined />} title="مدیریت مقاله ها">
