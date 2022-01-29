@@ -1,4 +1,4 @@
-import { Table } from "antd";
+import Table from "../../components/utils/Table";
 import axios from "axios";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
@@ -11,20 +11,17 @@ export default class List extends Component {
   };
 
   columns = [
-    { title: "شناسه", key: "id", dataIndex: "id" },
-    { title: "نام", key: "name", dataIndex: "name" },
+    { title: "شناسه", key: "id"},
+    { title: "نام", key: "name" },
     {
       title: "آدرس",
       key: "address",
-      dataIndex: "address",
       render: (field, record, index) => {
         return `${field.city}, ${field.street} | Phone:${record.phone}`;
       },
     },
     {
-      title: "",
       key: "actions",
-      dataIndex: "actions",
       render: (f, r) =>(
           <Link to={`/persons/${r.id}`}>
             <EyeOutlined />
@@ -43,8 +40,7 @@ export default class List extends Component {
     return (
       <div>
         <Table
-          rowKey={"id"}
-          dataSource={this.state.persons}
+          data={this.state.persons}
           columns={this.columns}
           loading={this.state.loading}
         />
