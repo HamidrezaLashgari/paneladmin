@@ -8,6 +8,7 @@ import '../assets/css/general.css'
 import Dashboard from './generic/Dashboard'
 import Page404 from './generic/Page404'
 import PersonRouter from './person/Router'
+import PostRouter from './post/Router'
 const { Content } = Layout
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="persons*" element={<PersonRouter />} />
+              <Route path="posts*" element={<PostRouter />} />
               <Route path="*" element={<Page404 />} />
             </Routes>
           </Content>
