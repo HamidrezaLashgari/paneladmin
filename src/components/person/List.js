@@ -1,50 +1,64 @@
-import Table from "../../components/utils/Table";
-import axios from "axios";
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { EyeOutlined } from "@ant-design/icons";
-
-export default class List extends Component {
+import Table from '../../components/utils/Table'
+import axios from 'axios'
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { EyeOutlined } from '@ant-design/icons'
+import { connect } from 'react-redux'
+import { setPersons } from '../../redux/actions/person'
+class List extends Component {
   state = {
-    persons: [],
     loading: true,
-  };
+  }
 
   columns = [
-    { title: "شناسه", key: "id"},
-    { title: "نام", key: "name" },
+    { title: 'شناسه', key: 'id' },
+    { title: 'نام', key: 'name' },
     {
-      title: "آدرس",
-      key: "address",
+      title: 'آدرس',
+      key: 'address',
       render: (field, record, index) => {
-        return `${field.city}, ${field.street} | Phone:${record.phone}`;
+        return `${field.city}, ${field.street} | Phone:${record.phone}`
       },
     },
     {
-      key: "actions",
-      render: (f, r) =>(
-          <Link to={`/persons/${r.id}`}>
-            <EyeOutlined />
-          </Link>
-        )
-    }
+      key: 'actions',
+      render: (f, r) => (
+        <Link to={`/persons/${r.id}`}>
+          <EyeOutlined />
+        </Link>
+      ),
+    },
   ]
 
   componentDidMount() {
-    axios("https://jsonplaceholder.typicode.com/users")
-      .then(({ data }) => this.setState({ persons: data }))
-      .finally(() => this.setState({ loading: false }));
+    axios('https://jsonplaceholder.typicode.com/users')
+      // .then(({ data }) => this.setState({ persons: data }))
+      .then(({ data }) => this.props.setItems(data))
+
+      .finally(() => this.setState({ loading: false }))
   }
 
   render() {
     return (
       <div>
         <Table
-          data={this.state.persons}
+          data={this.props.persons}
           columns={this.columns}
           loading={this.state.loading}
         />
       </div>
-    );
+    )
   }
 }
+
+const mapStateToProps = (state) => {
+  return { persons: state }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setItems: (data) => dispatch(setPersons(data)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(List)

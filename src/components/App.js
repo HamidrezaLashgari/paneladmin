@@ -21,8 +21,8 @@ function App() {
           <Content className="content">
             <Routes>
               <Route path="/" element={<Dashboard />} />
-              <Route path="persons*" element={<PersonRouter />} />
-              <Route path="posts*" element={<PostRouter />} />
+              <Route path="persons/*" element={<PersonRouter />} />
+              <Route path="posts/*" element={<PostRouter />} />
               <Route path="*" element={<Page404 />} />
             </Routes>
           </Content>
