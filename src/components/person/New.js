@@ -1,25 +1,24 @@
-import { message } from "antd";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import Form, { Text, Select, Checkbox, Submit } from "../utils/Form";
+import { message } from 'antd'
+import { useNavigate } from 'react-router-dom'
+import request from '../../tools/request'
+import Form, { Text, Select, Checkbox, Submit } from '../utils/Form'
 
 const genderOptions = [
-  { label: "مرد", value: "male" },
-  { label: "زن", value: "Female" },
-];
+  { label: 'مرد', value: 'male' },
+  { label: 'زن', value: 'Female' },
+]
 
 export default function New() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   function handleSubmit(values) {
-    console.log(values);
-    axios
-      .post("https://jsonplaceholder.typicode.com/users", values)
+    console.log(values)
+    request('/users', {method:'POST', data: values})
       .then((response) => {
-        message.success("کاربر با موفقیت ساخته شد.");
-        navigate("/persons");
+        message.success('کاربر با موفقیت ساخته شد.')
+        navigate('/persons')
       })
-      .catch((err) => message.error("متاسفانه مشکلی پیش آمده است."));
+      .catch((err) => message.error('متاسفانه مشکلی پیش آمده است.'))
   }
 
   return (
@@ -40,5 +39,5 @@ export default function New() {
         <Submit />
       </Form>
     </div>
-  );
+  )
 }

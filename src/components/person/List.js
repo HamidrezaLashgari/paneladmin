@@ -1,10 +1,11 @@
 import Table from '../../components/utils/Table'
-import axios from 'axios'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { EyeOutlined } from '@ant-design/icons'
 import { connect } from 'react-redux'
 import { setPersons } from '../../redux/actions/person'
+import request from '../../tools/request'
+
 class List extends Component {
   state = {
     loading: true,
@@ -31,7 +32,7 @@ class List extends Component {
   ]
 
   componentDidMount() {
-    axios('https://jsonplaceholder.typicode.com/users')
+    request('/users')
       // .then(({ data }) => this.setState({ persons: data }))
       .then(({ data }) => this.props.setItems(data))
 
@@ -52,7 +53,7 @@ class List extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { persons: state }
+  return { persons: state.persons }
 }
 
 const mapDispatchToProps = (dispatch) => {
