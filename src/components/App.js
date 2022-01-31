@@ -4,11 +4,12 @@ import { Routes, Route } from 'react-router-dom'
 import Footer from './generic/Footer'
 import Header from './generic/Header'
 import Sidebar from './generic/Sidebar'
-import '../assets/css/general.css'
 import Dashboard from './generic/Dashboard'
 import Page404 from './generic/Page404'
 import PersonRouter from './person/Router'
 import PostRouter from './post/Router'
+import 'assets/css/general.css'
+
 const { Content } = Layout
 
 function App() {

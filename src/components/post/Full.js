@@ -2,7 +2,7 @@ import { Divider } from 'antd'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { getPost } from '../../redux/actions/post'
+import { getPost } from 'actions/post'
 
 export default function Full() {
   const { id } = useParams()
@@ -17,7 +17,7 @@ export default function Full() {
 
   return (
     <div>
-      <h3>نمایش کاربر</h3>
+      <h3>نمایش پست</h3>
       <Divider />
       <label>عنوان:</label>
       <Divider type="vertical" />

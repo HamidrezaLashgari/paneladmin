@@ -1,5 +1,5 @@
 import { Layout } from 'antd';
-import '../../assets/scss/Footer.scss'
+import 'assets/scss/Footer.scss'
 
 
 const {Footer: AntFooter } = Layout

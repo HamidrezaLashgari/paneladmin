@@ -1,8 +1,8 @@
 import { Divider } from 'antd'
-import React, { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { getPost } from '../../redux/actions/post'
+import { getPost } from 'redux/actions/post'
 
 function Full({ post, getItem }) {
   const { id } = useParams()

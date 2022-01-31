@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { EyeOutlined } from '@ant-design/icons'
-import Table from '../utils/Table'
+import Table from 'components/utils/Table'
 import { connect } from 'react-redux'
-import { setPosts, getPosts } from '../../redux/actions/post'
-import request from '../../tools/request'
+import { getPosts } from 'actions/post'
 
 class List extends Component {
   columns = [
