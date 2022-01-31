@@ -1,19 +1,15 @@
 import { Divider } from 'antd'
-import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { getPost } from '../../redux/actions/post'
 
-export default function Full() {
+function Full({ post, getItem }) {
   const { id } = useParams()
 
-  const dispatch = useDispatch()
-
-  const post = useSelector(state => state.post)
-
   useEffect(() => {
-    dispatch(getPost(id))
-  }, [id, dispatch])
+    getItem(id)
+  }, [id])
 
   return (
     <div>
@@ -31,5 +27,16 @@ export default function Full() {
     </div>
   )
 }
+const mapStateToProps = (state) => {
+  return {
+    post: state.post,
+  }
+}
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getItem: id => dispatch(getPost(id)),
+  }
+}
 
+export default connect(mapStateToProps, mapDispatchToProps)(Full)
