@@ -8,11 +8,21 @@ import {
   AlignRightOutlined,
 } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
+import { logout as logoutAction } from 'actions/user'
+import { useDispatch } from 'react-redux'
+
 
 const { Sider } = Layout
 const { SubMenu } = Menu
 
 export default function Sidebar() {
+
+  const dispatch = useDispatch()
+
+  function logout () {
+    dispatch(logoutAction())
+  }
+
   return (
     <Sider>
       <Menu
@@ -45,7 +55,7 @@ export default function Sidebar() {
           <Menu.Item key="11">Option 11</Menu.Item>
           <Menu.Item key="12">Option 12</Menu.Item>
         </SubMenu>
-        <Menu.Item key="logout" icon={<TeamOutlined />}>
+        <Menu.Item key="logout" icon={<TeamOutlined />} onClick={logout}>
           خروج
         </Menu.Item>
       </Menu>
