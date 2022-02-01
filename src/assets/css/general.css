@@ -16,3 +16,13 @@ body {
     padding: 2em;
     
 }
+
+
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.05);
+    height: 100vh;
+  }
